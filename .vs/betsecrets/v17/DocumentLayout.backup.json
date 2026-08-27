@@ -1,0 +1,221 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|c:\\users\\rafael.matos\\documents\\stuff\\betsecrets\\betsecrets\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|c:\\users\\rafael.matos\\documents\\stuff\\betsecrets\\betsecrets\\interfaces\\services\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:interfaces\\services\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|c:\\users\\rafael.matos\\documents\\stuff\\betsecrets\\betsecrets\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|c:\\users\\rafael.matos\\documents\\stuff\\betsecrets\\betsecrets\\modelos\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:modelos\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|c:\\users\\rafael.matos\\documents\\stuff\\betsecrets\\betsecrets\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|c:\\users\\rafael.matos\\documents\\stuff\\betsecrets\\betsecrets\\orm\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:orm\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|c:\\users\\rafael.matos\\documents\\stuff\\betsecrets\\betsecrets\\modelos\\request\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:modelos\\request\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|c:\\users\\rafael.matos\\documents\\stuff\\betsecrets\\betsecrets\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|c:\\users\\rafael.matos\\documents\\stuff\\betsecrets\\betsecrets\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|c:\\users\\rafael.matos\\documents\\stuff\\betsecrets\\betsecrets\\interfaces\\repository\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:interfaces\\repository\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|c:\\users\\rafael.matos\\documents\\stuff\\betsecrets\\betsecrets\\modelos\\response\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:modelos\\response\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|c:\\users\\rafael.matos\\documents\\stuff\\betsecrets\\betsecrets\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsuarioService.cs",
+              "DocumentMoniker": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Services\\UsuarioService.cs",
+              "RelativeDocumentMoniker": "Services\\UsuarioService.cs",
+              "ToolTip": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Services\\UsuarioService.cs",
+              "RelativeToolTip": "Services\\UsuarioService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T17:10:27.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsuarioModel.cs",
+              "DocumentMoniker": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Modelos\\UsuarioModel.cs",
+              "RelativeDocumentMoniker": "Modelos\\UsuarioModel.cs",
+              "ToolTip": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Modelos\\UsuarioModel.cs",
+              "RelativeToolTip": "Modelos\\UsuarioModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T16:42:35.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-24T14:40:07.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\ORM\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "ORM\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\ORM\\AppDbContext.cs",
+              "RelativeToolTip": "ORM\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T16:21:35.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Controllers\\BaseController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BaseController.cs",
+              "ToolTip": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Controllers\\BaseController.cs",
+              "RelativeToolTip": "Controllers\\BaseController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T17:46:09.366Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T17:15:11.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Modelos\\Request\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "Modelos\\Request\\LoginRequest.cs",
+              "ToolTip": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Modelos\\Request\\LoginRequest.cs",
+              "RelativeToolTip": "Modelos\\Request\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T18:01:22.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IUsuarioService.cs",
+              "DocumentMoniker": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Interfaces\\Services\\IUsuarioService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\Services\\IUsuarioService.cs",
+              "ToolTip": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Interfaces\\Services\\IUsuarioService.cs",
+              "RelativeToolTip": "Interfaces\\Services\\IUsuarioService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T16:32:32.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UsuarioRepository.cs",
+              "DocumentMoniker": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Repositories\\UsuarioRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\UsuarioRepository.cs",
+              "ToolTip": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Repositories\\UsuarioRepository.cs",
+              "RelativeToolTip": "Repositories\\UsuarioRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwB0AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T16:35:00.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAC8AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T16:11:30.858Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IUsuarioRepository.cs",
+              "DocumentMoniker": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Interfaces\\Repository\\IUsuarioRepository.cs",
+              "RelativeDocumentMoniker": "Interfaces\\Repository\\IUsuarioRepository.cs",
+              "ToolTip": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Interfaces\\Repository\\IUsuarioRepository.cs",
+              "RelativeToolTip": "Interfaces\\Repository\\IUsuarioRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T16:31:34.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LoginResponse.cs",
+              "DocumentMoniker": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Modelos\\Response\\LoginResponse.cs",
+              "RelativeDocumentMoniker": "Modelos\\Response\\LoginResponse.cs",
+              "ToolTip": "C:\\Users\\RAFAEL.MATOS\\Documents\\Stuff\\betsecrets\\betsecrets\\Modelos\\Response\\LoginResponse.cs",
+              "RelativeToolTip": "Modelos\\Response\\LoginResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T18:02:35.109Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
