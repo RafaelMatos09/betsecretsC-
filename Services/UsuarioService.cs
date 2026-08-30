@@ -30,23 +30,37 @@ namespace betsecrets.Services
             return usuarios;
         }
 
-        public async Task<LoginResponse?> Login(LoginRequest request)
+        public async Task<LoginResponse?> Login(string email, string senha)
         {
-            var usuario = await _usuarioRepository
-                .BuscarPorEmail(request.Email);
+            if (email == null ||
+                string.IsNullOrWhiteSpace(email) ||
+                string.IsNullOrWhiteSpace(senha))
+            {
+                return null;
+            }
+
+            var usuario = await _usuarioRepository.BuscarPorEmail(email);
 
             if (usuario == null)
                 return null;
 
             var senhaValida = BCrypt.Net.BCrypt.Verify(
-                request.Senha,
+                senha,
                 usuario.Senha
             );
 
             if (!senhaValida)
-                return null;
+                return null;            
 
             var token = GerarToken(usuario);
+
+            var registroAcessoRequest = new LoginResponse
+            {
+                Usuario = usuario,
+                Token = string.Empty
+            };
+
+            _usuarioRepository.CadastraRegistroAcesso(registroAcessoRequest);
 
             return new LoginResponse
             {

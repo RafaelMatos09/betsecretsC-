@@ -1,0 +1,159 @@
+﻿# =========================
+
+# Visual Studio / .NET
+
+# =========================
+
+# Build folders
+
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio folders
+
+.vs/
+.vscode/
+.idea/
+
+# User-specific files
+
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+
+.idea/
+
+# =========================
+
+# .NET / ASP.NET Core
+
+# =========================
+
+# Publish output
+
+publish/
+out/
+TestResults/
+
+# NuGet
+
+*.nupkg
+*.snupkg
+packages/
+!packages/build/
+
+# Entity Framework
+
+*.dbmdl
+
+# Local database files
+
+*.mdf
+*.ldf
+*.sqlite
+*.sqlite3
+
+# =========================
+
+# ASP.NET Configuration
+
+# =========================
+
+# Local development settings
+
+appsettings.Development.json
+appsettings.Local.json
+
+# User secrets
+
+secrets.json
+
+# Environment files
+
+.env
+.env.*
+
+# =========================
+
+# Logs
+
+# =========================
+
+*.log
+logs/
+
+# =========================
+
+# OS Files
+
+# =========================
+
+# Windows
+
+Thumbs.db
+Desktop.ini
+
+# macOS
+
+.DS_Store
+
+# =========================
+
+# Temporary files
+
+# =========================
+
+*.tmp
+*.temp
+*.cache
+
+# Generated files
+
+Generated/
+wwwroot/lib/
+
+# Coverage
+
+coverage/
+coverage*.json
+
+# Dotnet tools
+
+.dotnet/
+
+# Azure
+
+.publishsettings
+
+# JetBrains
+
+_ReSharper*/
+*.DotSettings.user
+
+# Visual Studio profiler
+
+*.psess
+*.vsp
+*.vspx
+
+# Backup files
+
+*.bak
+*.orig
+*.rej
+obj/Debug/net8.0/refint/betsecrets.dll
+obj/Debug/net8.0/ref/betsecrets.dll
+betsecrets.sln
+betsecrets.csproj
+betsecrets.csproj.user
+.vs/betsecrets/DesignTimeBuild/.dtbcache.v2
+.vs/betsecrets/v18/.futdcache.v2
+.vs/betsecrets/v18/.suo
+obj/Debug/net8.0/ref/betsecrets.dll
+obj/Debug/net8.0/refint/betsecrets.dll

@@ -1,4 +1,5 @@
 ﻿using betsecrets.Modelos;
+using betsecrets.Modelos.Response;
 
 namespace betsecrets.Interfaces.Repository
 {
@@ -6,5 +7,6 @@ namespace betsecrets.Interfaces.Repository
     {
         Task<List<UsuarioModel>> ListarUsuarios();
         Task<UsuarioModel?> BuscarPorEmail(string email);
+        void CadastraRegistroAcesso(LoginResponse req);
     }
 }

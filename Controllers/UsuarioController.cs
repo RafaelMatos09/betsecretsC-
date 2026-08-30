@@ -16,12 +16,24 @@ namespace betsecrets.Controllers
         {
             _usuarioService = usuarioService;
         }
-
+        [AllowAnonymous]
         [HttpGet("listar")]
         public async Task<IActionResult> ListarUsuarios()
         {
             var usuarios = await _usuarioService.ListarUsuarios();
             return Ok(usuarios);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("login")]
+        public async Task<IActionResult> Login([FromQuery] string email, [FromQuery] string senha)
+        {
+            var result = await _usuarioService.Login(email, senha);
+
+            if (result is null)
+                return Unauthorized(new { mensagem = "Email ou senha inválidos." });
+
+            return Ok(result);
         }
 
     }

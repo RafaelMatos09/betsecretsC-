@@ -1,4 +1,6 @@
-﻿namespace betsecrets.Modelos
+﻿using System.Numerics;
+
+namespace betsecrets.Modelos
 {
     public class UsuarioModel
     {
