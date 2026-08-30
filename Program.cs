@@ -5,6 +5,7 @@ using betsecrets.Repositories;
 using betsecrets.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using System.Net.Http.Headers;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,11 +16,23 @@ builder.Services.AddScoped<AppDbContext>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
+builder.Services.AddHttpClient<ApiFutebolService>((sp, client) =>
+{
+    var config = sp.GetRequiredService<IConfiguration>();
+    var baseUrl = config["ApiFutebol:BaseUrl"]
+        ?? throw new InvalidOperationException("ApiFutebol BaseUrl n√£o configurada.");
+    var apiKey = config["ApiFutebol:ApiKey"]
+        ?? throw new InvalidOperationException("ApiFutebol ApiKey n√£o configurada.");
+
+    client.BaseAddress = new Uri(baseUrl.TrimEnd('/') + "/");
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+});
+
 var jwtKey = builder.Configuration["Jwt:Key"]
-    ?? throw new InvalidOperationException("JWT Key nùo configurada.");
+    ?? throw new InvalidOperationException("JWT Key nÔøΩo configurada.");
 
 if (Encoding.UTF8.GetByteCount(jwtKey) < 16)
-    throw new InvalidOperationException("JWT Key deve ter no mùnimo 16 caracteres (128 bits) para HS256.");
+    throw new InvalidOperationException("JWT Key deve ter no mÔøΩnimo 16 caracteres (128 bits) para HS256.");
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

@@ -1,5 +1,15 @@
 [
   {
+    "ContainingType": "betsecrets.Controllers.TabelaController",
+    "Method": "BuscarTabela",
+    "RelativePath": "api/Tabela/brasileirao",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "betsecrets.Controllers.UsuarioController",
     "Method": "Cadastro",
     "RelativePath": "api/Usuario/cadastro",
