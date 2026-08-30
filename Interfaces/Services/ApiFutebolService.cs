@@ -50,6 +50,54 @@ public async Task<List<TabelaCampeonatoModel>> BuscarTabela()
             ) ?? new List<TabelaCampeonatoModel>();
         }
 
+        public async Task<List<PartidaAoVivoModel>> BuscarPartidasAoVivo()
+        {
+            using var request = new HttpRequestMessage(
+                 HttpMethod.Get,
+                 "https://api.api-futebol.com.br/v1/ao-vivo"
+             );
 
+            request.Headers.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue(
+                    "Bearer",
+                    "test_f326d0e309806e29120709c7e0ceec"
+                );
+
+            //if (!response.IsSuccessStatusCode)
+            //{
+            //    var errorBody = await response.Content.ReadAsStringAsync();
+
+            //    throw new HttpRequestException(
+            //        $"Erro ao buscar partidas ao vivo: {(int)response.StatusCode} - {errorBody}",
+            //        null,
+            //        response.StatusCode
+            //    );
+            //}
+
+            //var json = await response.Content.ReadAsStringAsync();
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorBody = await response.Content.ReadAsStringAsync();
+
+                throw new HttpRequestException(
+                    $"Erro ao buscar tabela do campeonato 10: {(int)response.StatusCode} - {errorBody}",
+                    null,
+                    response.StatusCode
+                );
+            }
+
+            var json = await response.Content.ReadAsStringAsync();
+
+            return JsonSerializer.Deserialize<List<PartidaAoVivoModel>>(
+                json,
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }
+            ) ?? new List<PartidaAoVivoModel>();
+        }
     }
 }

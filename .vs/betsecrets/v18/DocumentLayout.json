@@ -11,12 +11,20 @@
       "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:controllers\\tabelacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|d:\\projetos\\betsecretsc-\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|d:\\projetos\\betsecretsc-\\controllers\\partidascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:controllers\\partidascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|d:\\projetos\\betsecretsc-\\modelos\\tabelacampeonatomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:modelos\\tabelacampeonatomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|d:\\projetos\\betsecretsc-\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|d:\\projetos\\betsecretsc-\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|d:\\projetos\\betsecretsc-\\orm\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|d:\\projetos\\betsecretsc-\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|d:\\projetos\\betsecretsc-\\modelos\\tabelacampeonatomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|solutionrelative:modelos\\tabelacampeonatomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{85157A13-F50A-492D-BA5A-F3D6BD331287}|betsecrets.csproj|d:\\projetos\\betsecretsc-\\interfaces\\services\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -74,8 +78,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PartidasController.cs",
+              "DocumentMoniker": "D:\\projetos\\betsecretsC-\\Controllers\\PartidasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PartidasController.cs",
+              "ToolTip": "D:\\projetos\\betsecretsC-\\Controllers\\PartidasController.cs",
+              "RelativeToolTip": "Controllers\\PartidasController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-30T11:20:08.957Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -84,7 +101,7 @@
               "RelativeDocumentMoniker": "Interfaces\\Services\\ApiFutebolService.cs",
               "ToolTip": "D:\\projetos\\betsecretsC-\\Interfaces\\Services\\ApiFutebolService.cs",
               "RelativeToolTip": "Interfaces\\Services\\ApiFutebolService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAqwA4AAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAxwDgAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-30T06:36:24.174Z",
               "EditorCaption": ""
@@ -97,40 +114,40 @@
               "RelativeDocumentMoniker": "Controllers\\TabelaController.cs",
               "ToolTip": "D:\\projetos\\betsecretsC-\\Controllers\\TabelaController.cs",
               "RelativeToolTip": "Controllers\\TabelaController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAABgAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-30T06:37:44.699Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "TabelaCampeonatoModel.cs",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\Modelos\\TabelaCampeonatoModel.cs",
               "RelativeDocumentMoniker": "Modelos\\TabelaCampeonatoModel.cs",
               "ToolTip": "D:\\projetos\\betsecretsC-\\Modelos\\TabelaCampeonatoModel.cs",
               "RelativeToolTip": "Modelos\\TabelaCampeonatoModel.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAqwAQAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-30T06:34:58.957Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "UsuarioRepository.cs",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\Repositories\\UsuarioRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\UsuarioRepository.cs",
               "ToolTip": "D:\\projetos\\betsecretsC-\\Repositories\\UsuarioRepository.cs",
               "RelativeToolTip": "Repositories\\UsuarioRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAG4AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwG4AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-26T23:33:09.828Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "UsuarioModel.cs",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\Modelos\\UsuarioModel.cs",
               "RelativeDocumentMoniker": "Modelos\\UsuarioModel.cs",
@@ -143,7 +160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "IUsuarioRepository.cs",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\Interfaces\\Repository\\IUsuarioRepository.cs",
               "RelativeDocumentMoniker": "Interfaces\\Repository\\IUsuarioRepository.cs",
@@ -156,7 +173,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "IUsuarioService.cs",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\Interfaces\\Services\\IUsuarioService.cs",
               "RelativeDocumentMoniker": "Interfaces\\Services\\IUsuarioService.cs",
@@ -169,7 +186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "UsuarioController.cs",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\Controllers\\UsuarioController.cs",
               "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
@@ -182,20 +199,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\projetos\\betsecretsC-\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-26T23:33:09.862Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\ORM\\AppDbContext.cs",
               "RelativeDocumentMoniker": "ORM\\AppDbContext.cs",
@@ -208,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "UsuarioService.cs",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\Services\\UsuarioService.cs",
               "RelativeDocumentMoniker": "Services\\UsuarioService.cs",
@@ -221,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -234,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\Modelos\\Request\\LoginRequest.cs",
               "RelativeDocumentMoniker": "Modelos\\Request\\LoginRequest.cs",
@@ -247,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "launchSettings.json",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
@@ -260,7 +277,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "betsecrets",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\betsecrets.csproj",
               "RelativeDocumentMoniker": "betsecrets.csproj",
@@ -273,7 +290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "BaseController.cs",
               "DocumentMoniker": "D:\\projetos\\betsecretsC-\\Controllers\\BaseController.cs",
               "RelativeDocumentMoniker": "Controllers\\BaseController.cs",
