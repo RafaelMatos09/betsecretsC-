@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "betsecrets.Controllers.UsuarioController",
+    "Method": "Cadastro",
+    "RelativePath": "api/Usuario/cadastro",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "betsecrets.Modelos.Request.CadastroRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "betsecrets.Controllers.UsuarioController",
     "Method": "ListarUsuarios",
     "RelativePath": "api/Usuario/listar",
     "HttpMethod": "GET",

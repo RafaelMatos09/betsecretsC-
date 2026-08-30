@@ -7,6 +7,7 @@ namespace betsecrets.Interfaces.Repository
     {
         Task<List<UsuarioModel>> ListarUsuarios();
         Task<UsuarioModel?> BuscarPorEmail(string email);
+        Task<UsuarioModel?> CadastrarUsuario(UsuarioModel usuario);
         void CadastraRegistroAcesso(LoginResponse req);
     }
 }

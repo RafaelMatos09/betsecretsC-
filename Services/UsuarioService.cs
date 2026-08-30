@@ -76,6 +76,50 @@ namespace betsecrets.Services
             };
         }
 
+        public async Task<LoginResponse?> Cadastrar(CadastroRequest request)
+        {
+            if (string.IsNullOrWhiteSpace(request.Nome) ||
+                string.IsNullOrWhiteSpace(request.Email) ||
+                string.IsNullOrWhiteSpace(request.Senha))
+            {
+                return null;
+            }
+
+            var emailExistente = await _usuarioRepository.BuscarPorEmail(request.Email);
+            if (emailExistente != null)
+                return null;
+
+            var userName = request.Email.Split('@')[0];
+
+            var novoUsuario = new UsuarioModel
+            {
+                Nome = request.Nome.Trim(),
+                Email = request.Email.Trim().ToLowerInvariant(),
+                UserName = userName,
+                Senha = BCrypt.Net.BCrypt.HashPassword(request.Senha),
+                FotoUrl = string.Empty
+            };
+
+            var usuarioCriado = await _usuarioRepository.CadastrarUsuario(novoUsuario);
+            if (usuarioCriado == null)
+                return null;
+
+            var token = GerarToken(usuarioCriado);
+
+            return new LoginResponse
+            {
+                Token = token,
+                Usuario = new UsuarioModel
+                {
+                    Id = usuarioCriado.Id,
+                    Nome = usuarioCriado.Nome,
+                    UserName = usuarioCriado.UserName,
+                    Email = usuarioCriado.Email,
+                    FotoUrl = usuarioCriado.FotoUrl
+                }
+            };
+        }
+
         private string GerarToken(UsuarioModel usuario)
         {
             var key = _configuration["Jwt:Key"]

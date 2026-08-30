@@ -8,5 +8,6 @@ namespace betsecrets.Interfaces.Services
     {
         Task<List<UsuarioModel>> ListarUsuarios();
         Task<LoginResponse?> Login(string email, string senha);
+        Task<LoginResponse?> Cadastrar(CadastroRequest request);
     }
 }

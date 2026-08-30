@@ -60,6 +60,38 @@ namespace betsecrets.Repositories
             }
         }
 
+        public async Task<UsuarioModel?> CadastrarUsuario(UsuarioModel usuario)
+        {
+            var dbParam = new DynamicParameters();
+            dbParam.Add("@Nome", usuario.Nome);
+            dbParam.Add("@UserName", usuario.UserName);
+            dbParam.Add("@Email", usuario.Email);
+            dbParam.Add("@Senha", usuario.Senha);
+            dbParam.Add("@FotoUrl", usuario.FotoUrl);
+
+            var query = @"
+                        INSERT INTO usuarios_bet
+                            (nome, username, email, senha, foto_url, criado_em)
+                        VALUES
+                            (@Nome, @UserName, @Email, @Senha, @FotoUrl, NOW())
+                        RETURNING
+                            id         AS Id,
+                            nome       AS Nome,
+                            username   AS UserName,
+                            email      AS Email,
+                            foto_url   AS FotoUrl";
+
+            try
+            {
+                var result = await _context.GetAllAsync<UsuarioModel>(query, dbParam);
+                return result.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao cadastrar usuário: {ex.Message}", ex);
+            }
+        }
+
         public async void CadastraRegistroAcesso(LoginResponse req)
         {
             if (req?.Usuario == null)
