@@ -1,0 +1,28 @@
+# Blueprint do Render — https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: betsecrets-api
+    runtime: docker
+    plan: free
+    region: sao
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ConnectionStrings__Postgres
+        sync: false
+      - key: Jwt__Key
+        sync: false
+      - key: Jwt__Issuer
+        value: BetSecrets
+      - key: Jwt__Audience
+        value: BetSecrets
+      - key: ApiFutebol__BaseUrl
+        value: https://api.api-futebol.com.br/v1
+      - key: ApiFutebol__ApiKey
+        sync: false
+      - key: Cors__AllowedOrigins__0
+        value: https://seu-front.onrender.com
+      - key: Cors__AllowedOrigins__1
+        value: http://localhost:5174
