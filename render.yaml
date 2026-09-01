@@ -10,6 +10,10 @@ services:
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
+      - key: DOTNET_USE_POLLING_FILE_WATCHER
+        value: "true"
+      - key: DOTNET_hostBuilder__reloadOnChange
+        value: "false"
       - key: ConnectionStrings__Postgres
         sync: false
       - key: Jwt__Key

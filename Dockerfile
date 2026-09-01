@@ -14,6 +14,8 @@ WORKDIR /app
 
 ENV ASPNETCORE_ENVIRONMENT=Production
 ENV DOTNET_RUNNING_IN_CONTAINER=true
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+ENV DOTNET_hostBuilder__reloadOnChange=false
 
 COPY --from=build /app/publish .
 
