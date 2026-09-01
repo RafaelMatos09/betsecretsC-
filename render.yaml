@@ -27,6 +27,8 @@ services:
       - key: ApiFutebol__ApiKey
         sync: false
       - key: Cors__AllowedOrigins__0
-        value: https://seu-front.onrender.com
-      - key: Cors__AllowedOrigins__1
         value: http://localhost:5174
+      - key: Cors__AllowedOrigins__1
+        value: http://localhost:5175
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://betsecrets-react.onrender.com

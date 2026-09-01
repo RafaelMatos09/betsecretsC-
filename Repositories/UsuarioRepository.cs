@@ -92,18 +92,13 @@ namespace betsecrets.Repositories
             }
         }
 
-        public async void CadastraRegistroAcesso(LoginResponse req)
+        public async Task CadastraRegistroAcesso(LoginResponse req)
         {
             if (req?.Usuario == null)
-            {
-                throw new ArgumentNullException(nameof(req.Usuario), "Usuário não pode ser nulo.");
-            }
+                return;
 
-            // Converte string para bigint (long)
             if (!long.TryParse(req.Usuario.Id, out long usuarioId))
-            {
-                throw new ArgumentException("Id do usuário é inválido.");
-            }
+                return;
 
             var dbParam = new DynamicParameters();
             dbParam.Add("@Id", usuarioId);
@@ -118,9 +113,9 @@ namespace betsecrets.Repositories
             {
                 await _context.ExecuteAsync(query, dbParam);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"Erro ao cadastrar registro de acesso: {ex.Message}", ex);
+                // Falha no log de acesso não deve impedir o login
             }
         }
     }

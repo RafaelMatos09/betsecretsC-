@@ -54,13 +54,18 @@ namespace betsecrets.Services
 
             var token = GerarToken(usuario);
 
-            var registroAcessoRequest = new LoginResponse
+            try
             {
-                Usuario = usuario,
-                Token = string.Empty
-            };
-
-            _usuarioRepository.CadastraRegistroAcesso(registroAcessoRequest);
+                await _usuarioRepository.CadastraRegistroAcesso(new LoginResponse
+                {
+                    Usuario = usuario,
+                    Token = string.Empty,
+                });
+            }
+            catch
+            {
+                // Falha no log de acesso não deve impedir o login
+            }
 
             return new LoginResponse
             {
