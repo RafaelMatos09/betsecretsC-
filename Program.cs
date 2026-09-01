@@ -29,13 +29,12 @@ builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddHttpClient<ApiFutebolService>((sp, client) =>
 {
     var config = sp.GetRequiredService<IConfiguration>();
-    var baseUrl = config["ApiFutebol:BaseUrl"]
-        ?? throw new InvalidOperationException("ApiFutebol BaseUrl não configurada.");
-    var apiKey = config["ApiFutebol:ApiKey"]
-        ?? throw new InvalidOperationException("ApiFutebol ApiKey não configurada.");
+    var baseUrl = config["ApiFutebol:BaseUrl"] ?? "https://api.api-futebol.com.br/v1";
+    var apiKey = config["ApiFutebol:ApiKey"];
 
     client.BaseAddress = new Uri(baseUrl.TrimEnd('/') + "/");
-    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+    if (!string.IsNullOrWhiteSpace(apiKey))
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 });
 
 var jwtKey = builder.Configuration["Jwt:Key"]
@@ -74,6 +73,17 @@ if (!string.IsNullOrWhiteSpace(extraOrigins))
 
 var allowedOrigins = corsOrigins.Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
 
+if (builder.Environment.IsProduction())
+{
+    if (string.IsNullOrWhiteSpace(builder.Configuration.GetConnectionString("Postgres")))
+        throw new InvalidOperationException(
+            "ConnectionStrings:Postgres é obrigatória em produção. " +
+            "Configure ConnectionStrings__Postgres no painel do Render.");
+
+    if (string.IsNullOrWhiteSpace(jwtKey))
+        throw new InvalidOperationException("Jwt:Key é obrigatória em produção.");
+}
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Frontend", policy =>
@@ -97,6 +107,23 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
+
+app.MapGet("/health/db", async (AppDbContext db) =>
+{
+    try
+    {
+        await db.TestConnectionAsync();
+        return Results.Ok(new { status = "ok", database = "connected" });
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem(
+            statusCode: StatusCodes.Status503ServiceUnavailable,
+            title: "Banco de dados indisponível",
+            detail: ex.Message);
+    }
+});
+
 app.MapControllers();
 
 app.Run();

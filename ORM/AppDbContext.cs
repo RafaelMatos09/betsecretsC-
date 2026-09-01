@@ -13,8 +13,18 @@ namespace betsecrets.ORM
         public AppDbContext(IConfiguration configuration)
         {
             _configuration = configuration;
-            _connectionString = _configuration.GetConnectionString("Postgres")
-                ?? throw new InvalidOperationException("Connection string 'Postgres' não configurada.");
+            _connectionString = _configuration.GetConnectionString("Postgres") ?? string.Empty;
+
+            if (string.IsNullOrWhiteSpace(_connectionString))
+                throw new InvalidOperationException(
+                    "Connection string 'Postgres' não configurada. " +
+                    "No Render, defina ConnectionStrings__Postgres nas variáveis de ambiente.");
+        }
+
+        public async Task TestConnectionAsync()
+        {
+            await using var connection = new NpgsqlConnection(_connectionString);
+            await connection.OpenAsync();
         }
 
         private IDbConnection Connection()
