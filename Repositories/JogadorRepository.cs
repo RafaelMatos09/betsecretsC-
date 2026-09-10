@@ -35,15 +35,15 @@ namespace betsecrets.Repositories
                         (
                             nome,
                             apelido,
-                            data_nascimento AS dataNascimento,
+                            data_nascimento,
                             cpf,
                             telefone,
                             foto,
-                            pe_dominante AS peDominante,
+                            pe_dominante,
                             posicao,
                             altura,
                             peso,
-                            numero_preferido AS numeroPreferido
+                            numero_preferido
                         )
                         VALUES
                         (

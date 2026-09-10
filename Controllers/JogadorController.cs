@@ -18,7 +18,7 @@ namespace betsecrets.Controllers
             _jogadorService = jogadorService;
         }
 
-        [HttpGet("cadastra-jogador")]        
+        [HttpPost("cadastra-jogador")]        
         public async Task<IActionResult> CadastraJogador([FromBody] JogadorModel req)
         {
             try
