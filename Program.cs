@@ -25,6 +25,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<AppDbContext>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IBairroService, BairroService>();
+builder.Services.AddScoped<IBairroRepository, BairroRepository>();
 
 builder.Services.AddHttpClient<ApiFutebolService>((sp, client) =>
 {
