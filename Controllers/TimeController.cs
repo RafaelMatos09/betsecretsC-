@@ -15,6 +15,7 @@ namespace betsecrets.Controllers
         {
             _timeService = timeService;
         }
+
         [HttpPost("cadastrar-time")]
         public async Task<IActionResult> CadastrarTime([FromBody] TimesModel req)
         {
@@ -22,6 +23,34 @@ namespace betsecrets.Controllers
             {
                 var time = await _timeService.CadastrarTime(req);
                 return Ok(time);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.Message });
+            }
+        }
+
+        [HttpGet("listar-times")]
+        public async Task<IActionResult> ListaTimes()
+        {
+            try
+            {
+                var times = await _timeService.ListaTimes();
+                return Ok(times);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.Message });
+            }
+        }
+
+        [HttpGet("consulta-times-detalhes")]
+        public async Task<IActionResult> ConsultaTimesDetalhes(string? id = null)
+        {
+            try
+            {
+                var times = await _timeService.ConsultaTimesDetalhes(id);
+                return Ok(times);
             }
             catch (Exception ex)
             {

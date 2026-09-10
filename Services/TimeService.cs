@@ -17,5 +17,15 @@ namespace betsecrets.Services
         {
             return await _timeRepository.CadastrarTime(req);
         }
+
+        public async Task<List<TimesModel>> ListaTimes()
+        {
+            return await _timeRepository.ListaTimes();
+        }
+
+        public async Task<List<TimesDetalheModel>> ConsultaTimesDetalhes(string? id = null)
+        {
+            return await _timeRepository.ConsultaTimesDetalhes(id);
+        }
     }
 }
