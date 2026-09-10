@@ -17,5 +17,10 @@ namespace betsecrets.Services
         {
             return await _bairroRepository.CadastraBairro(req);
         }
+
+        public async Task<List<BairroModel>> ListaBairros()
+        {
+            return await _bairroRepository.ListaBairros();
+        }
     }
 }

@@ -31,5 +31,19 @@ namespace betsecrets.Controllers
                 return StatusCode(500, new { message = ex.Message });
             }
         }
+
+        [HttpGet("listar-bairros")]
+        public async Task<IActionResult> ListaBairros()
+        {
+            try
+            {
+                var bairros = await _bairroService.ListaBairros();
+                return Ok(bairros);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.Message });
+            }
+        }
     }
 }

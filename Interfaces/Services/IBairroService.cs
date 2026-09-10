@@ -6,5 +6,6 @@ namespace betsecrets.Interfaces.Services
     public interface IBairroService
     {
         Task<BairroModel> CadastraBairro(BairroModel req);
+        Task<List<BairroModel>> ListaBairros();
     }
 }

@@ -37,5 +37,28 @@ namespace betsecrets.Repositories
                 throw new Exception($"Erro ao cadastrar bairro: {ex.Message}");
             }
         }
+
+        public async Task<List<BairroModel>> ListaBairros()
+        {
+            var query = @"
+                        SELECT
+                            id,
+                            nome,
+                            cidade,
+                            estado,
+                            created_at
+                        FROM bairros";
+
+            try
+            {
+                var bairros = await _context.GetAllAsync<BairroModel>(query);
+
+                return bairros.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao listar bairros: {ex.Message}", ex);
+            }
+        }
     }
 }
