@@ -27,6 +27,8 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IBairroService, BairroService>();
 builder.Services.AddScoped<IBairroRepository, BairroRepository>();
+builder.Services.AddScoped<ITimeService, TimeService>();
+builder.Services.AddScoped<ITimeRepository, TimeRepository>();
 
 builder.Services.AddHttpClient<ApiFutebolService>((sp, client) =>
 {
