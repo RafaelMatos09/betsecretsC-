@@ -33,6 +33,8 @@ builder.Services.AddScoped<IJogadorService, JogadorService>();
 builder.Services.AddScoped<IJogadorRepository, JogadorRepository>();
 builder.Services.AddScoped<IJogadorTimeService, JogadorTimeService>();
 builder.Services.AddScoped<IJogadorTimeRepository, JogadorTimeRepository>();
+builder.Services.AddScoped<ICampeonatoService, CampeonatoService>();
+builder.Services.AddScoped<ICampeonatoRepository, CampeonatoRepository>();
 
 builder.Services.AddHttpClient<ApiFutebolService>((sp, client) =>
 {
