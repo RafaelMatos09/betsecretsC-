@@ -9,5 +9,10 @@
         public DateTime? DataInicio { get; set; }
         public DateTime? DataFim { get; set; }
         public Boolean Ativo { get; set; }
+        public string? Nome { get; set; }
+        public string? Apelido { get; set; }
+        public string? Foto { get; set; }
+        public string? Posicao { get; set; }
+        public string? TimeNome { get; set; }
     }
 }

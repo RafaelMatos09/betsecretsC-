@@ -56,7 +56,7 @@ namespace betsecrets.Repositories
                             @SaldoGols,
                             @Pontos
                         )
-                        RETURNING id";           
+                        RETURNING id";
 
             try
             {
@@ -71,5 +71,92 @@ namespace betsecrets.Repositories
                 throw new Exception($"Erro ao cadastrar classificação: {ex.Message}", ex);
             }
         }
+
+
+        public async Task<List<ClassificacaoModel>> ListaClassificacao(long campeonatoId)
+        {
+            var query = @"
+                        SELECT
+                            c.posicao AS Posicao,
+                            t.nome AS Time,
+                            t.escudo,
+                            c.jogos AS Jogos,
+                            c.vitorias AS Vitorias,
+                            c.empates AS Empates,
+                            c.derrotas AS Derrotas,
+                            c.gols_pro AS GolsPro,
+                            c.gols_contra AS GolsContra,
+                            c.saldo_gols AS SaldoGols,
+                            c.pontos AS Pontos
+                        FROM classificacao c
+                        INNER JOIN times t ON t.id = c.time_id
+                        WHERE c.campeonato_id = @CampeonatoId
+                        ORDER BY
+                            c.pontos DESC,
+                            c.saldo_gols DESC,
+                            c.gols_pro DESC";
+
+            var dbPara = new DynamicParameters();
+
+            dbPara.Add("@CampeonatoId", campeonatoId);
+
+            try
+            {
+                var classificacao = await _context.GetAllAsync<ClassificacaoModel>(
+                    query,
+                    dbPara
+                );
+
+                return classificacao.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    $"Erro ao listar classificação: {ex.Message}",
+                    ex
+                );
+            }
+        }
+
+
+        public async Task RecalculaPosicoes(long campeonatoId)
+        {
+            var query = @"
+                        WITH ranking AS
+                        (
+                            SELECT
+                                id,
+                                ROW_NUMBER() OVER (
+                                    ORDER BY
+                                        pontos DESC,
+                                        saldo_gols DESC,
+                                        gols_pro DESC
+                                ) AS pos
+                            FROM classificacao
+                            WHERE campeonato_id = @CampeonatoId
+                        )
+                        UPDATE classificacao c
+                        SET posicao = r.pos
+                        FROM ranking r
+                        WHERE c.id = r.id";
+
+            var dbPara = new DynamicParameters();
+
+            dbPara.Add("@CampeonatoId", campeonatoId);
+
+            try
+            {
+                await _context.ExecuteAsync(query, dbPara);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    $"Erro ao recalcular posições: {ex.Message}",
+                    ex
+                );
+            }
+        }
     }
 }
+
+

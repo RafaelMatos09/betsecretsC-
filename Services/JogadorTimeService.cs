@@ -17,5 +17,8 @@ namespace betsecrets.Services
         {
             return await _jogadorTimeRepository.CadastrarJogadorTime(req);
         }
+        public Task<List<JogadorTimeModel>> ListaElenco(long timeId) => _jogadorTimeRepository.ListaElenco(timeId);
+        public Task<List<JogadorTimeModel>> ListaHistoricoJogador(long jogadorId) => _jogadorTimeRepository.ListaHistoricoJogador(jogadorId);
+        public Task EncerraVinculo(long id, DateTime dataFim) => _jogadorTimeRepository.EncerraVinculo(id, dataFim);
     }
 }

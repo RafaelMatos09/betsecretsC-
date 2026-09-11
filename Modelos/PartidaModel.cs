@@ -13,6 +13,11 @@
         public DateTime? DataHora { get; set; }
         public string? Status { get; set; }
         public string? Arbitro { get; set; }
+        public string? TimeCasa { get; set; }
+        public string? EscudoCasa { get; set; }
+        public string? TimeVisitante { get; set; }
+        public string? EscudoVisitante { get; set; }
+        public int? RodadaNumero { get; set; }
 
     }
 }

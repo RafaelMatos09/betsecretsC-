@@ -28,5 +28,67 @@ namespace betsecrets.Controllers
                 return StatusCode(500, new { message = ex.Message });
             }
         }
+        
+        [HttpGet("listar-times-campeonato/{campeonatoId:long}")]
+        public async Task<IActionResult> ListaTimesCampeonato(long campeonatoId)
+        {
+            try
+            {
+                var times = await _campeonatoTimeService.ListaTimesCampeonato(campeonatoId);
+
+                return Ok(times);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+
+        [HttpPut("atualizar-grupo")]
+        public async Task<IActionResult> AtualizaGrupo(
+            [FromBody] CampeonatoTimeModel req)
+        {
+            try
+            {
+                await _campeonatoTimeService.AtualizaGrupo(req);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+
+        [HttpDelete("excluir-campeonato-time/{campeonatoId:long}/{timeId:long}")]
+        public async Task<IActionResult> ExcluiCampeonatoTime(
+            long campeonatoId,
+            long timeId)
+        {
+            try
+            {
+                await _campeonatoTimeService.ExcluiCampeonatoTime(
+                    campeonatoId,
+                    timeId
+                );
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
     }
 }

@@ -17,5 +17,24 @@ namespace betsecrets.Services
         {
             return await _jogadorRepository.CadastraJogador(req);
         }
+        public async Task<JogadorModel?> ConsultaJogador(long id)
+        {
+            return await _jogadorRepository.ConsultaJogador(id);
+        }
+
+        public async Task<List<JogadorModel>> BuscaJogadores(string nome)
+        {
+            return await _jogadorRepository.BuscaJogadores(nome);
+        }
+
+        public async Task AtualizaJogador(JogadorModel req)
+        {
+            await _jogadorRepository.AtualizaJogador(req);
+        }
+
+        public async Task ExcluiJogador(long id)
+        {
+            await _jogadorRepository.ExcluiJogador(id);
+        }
     }
 }

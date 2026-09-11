@@ -30,5 +30,81 @@ namespace betsecrets.Controllers
                 return StatusCode(500, new { message = ex.Message });
             }
         }
+        
+        [HttpGet("listar-eventos-partida/{partidaId:long}")]
+        public async Task<IActionResult> ListaEventosPartida(long partidaId)
+        {
+            try
+            {
+                var eventos = await _partidaEventoService.ListaEventosPartida(partidaId);
+
+                return Ok(eventos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+
+        [HttpGet("listar-artilharia/{campeonatoId:long}")]
+        public async Task<IActionResult> ListaArtilharia(long campeonatoId)
+        {
+            try
+            {
+                var artilharia = await _partidaEventoService.ListaArtilharia(campeonatoId);
+
+                return Ok(artilharia);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+
+        [HttpPut("atualizar-partida-evento")]
+        public async Task<IActionResult> AtualizaPartidaEvento(
+            [FromBody] PartidaEventoModel req)
+        {
+            try
+            {
+                await _partidaEventoService.AtualizaPartidaEvento(req);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+
+        [HttpDelete("excluir-partida-evento/{id:long}")]
+        public async Task<IActionResult> ExcluiPartidaEvento(long id)
+        {
+            try
+            {
+                await _partidaEventoService.ExcluiPartidaEvento(id);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
     }
 }

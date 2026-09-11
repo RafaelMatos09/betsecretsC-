@@ -157,8 +157,72 @@ namespace betsecrets.Repositories
             {
                 throw new Exception($"Erro ao listar times: {ex.Message}", ex);
             }
+        }        
+        public async Task AtualizaTime(TimesModel req)
+        {
+            var query = @"
+                        UPDATE times
+                        SET
+                            nome = @Nome,
+                            sigla = @Sigla,
+                            escudo = @Escudo,
+                            cor_principal = @CorPrincipal,
+                            cor_secundaria = @CorSecundaria,
+                            tecnico = @Tecnico,
+                            telefone = @Telefone,
+                            instagram = @Instagram,
+                            updated_at = NOW()
+                        WHERE id = @Id";
+
+            var dbPara = new DynamicParameters();
+
+            dbPara.Add("@Id", req.Id);
+            dbPara.Add("@Nome", req.Nome);
+            dbPara.Add("@Sigla", req.Sigla);
+            dbPara.Add("@Escudo", req.Escudo);
+            dbPara.Add("@CorPrincipal", req.CorPrincipal);
+            dbPara.Add("@CorSecundaria", req.CorSecundaria);
+            dbPara.Add("@Tecnico", req.Tecnico);
+            dbPara.Add("@Telefone", req.Telefone);
+            dbPara.Add("@Instagram", req.Instagram);
+
+            try
+            {
+                await _context.ExecuteAsync(query, dbPara);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    $"Erro ao atualizar time: {ex.Message}",
+                    ex
+                );
+            }
         }
 
+        public async Task DesativaTime(long id)
+        {
+            var query = @"
+                        UPDATE times
+                        SET
+                            ativo = FALSE
+                        WHERE id = @Id";
+
+            var dbPara = new DynamicParameters();
+
+            dbPara.Add("@Id", id);
+
+            try
+            {
+                await _context.ExecuteAsync(query, dbPara);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    $"Erro ao desativar time: {ex.Message}",
+                    ex
+                );
+            }
+        }
 
     }
 }

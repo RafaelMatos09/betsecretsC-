@@ -17,5 +17,7 @@ namespace betsecrets.Services
         {
             return await _classificacaoRepository.CadastrarClassificacao(req);
         }
+        public Task<List<ClassificacaoModel>> ListaClassificacao(long campeonatoId) => _classificacaoRepository.ListaClassificacao(campeonatoId);
+        public Task RecalculaPosicoes(long campeonatoId) => _classificacaoRepository.RecalculaPosicoes(campeonatoId);
     }
 }

@@ -52,5 +52,93 @@ namespace betsecrets.Repositories
                 throw new Exception($"Erro ao cadastrar rodada: {ex.Message}", ex);
             }
         }
+        
+        public async Task<List<RodadaModel>> ListaRodadasCampeonato(long campeonatoId)
+        {
+            var query = @"
+                        SELECT
+                            id,
+                            numero,
+                            fase,
+                            data
+                        FROM rodadas
+                        WHERE campeonato_id = @CampeonatoId
+                        ORDER BY numero";
+
+            var dbPara = new DynamicParameters();
+
+            dbPara.Add("@CampeonatoId", campeonatoId);
+
+            try
+            {
+                var rodadas = await _context.GetAllAsync<RodadaModel>(
+                    query,
+                    dbPara
+                );
+
+                return rodadas.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    $"Erro ao listar rodadas: {ex.Message}",
+                    ex
+                );
+            }
+        }
+
+
+        public async Task AtualizaRodada(RodadaModel req)
+        {
+            var query = @"
+                        UPDATE rodadas
+                        SET
+                            data = @Data,
+                            fase = @Fase
+                        WHERE id = @Id";
+
+            var dbPara = new DynamicParameters();
+
+            dbPara.Add("@Id", req.Id);
+            dbPara.Add("@Data", req.Data);
+            dbPara.Add("@Fase", req.Fase);
+
+            try
+            {
+                await _context.ExecuteAsync(query, dbPara);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    $"Erro ao atualizar rodada: {ex.Message}",
+                    ex
+                );
+            }
+        }
+
+
+        public async Task ExcluiRodada(long id)
+        {
+            var query = @"
+                        DELETE FROM rodadas
+                        WHERE id = @Id";
+
+            var dbPara = new DynamicParameters();
+
+            dbPara.Add("@Id", id);
+
+            try
+            {
+                await _context.ExecuteAsync(query, dbPara);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    $"Erro ao excluir rodada: {ex.Message}",
+                    ex
+                );
+            }
+        }
+
     }
 }

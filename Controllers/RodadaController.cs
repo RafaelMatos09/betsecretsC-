@@ -29,5 +29,62 @@ namespace betsecrets.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        
+        [HttpGet("listar-rodadas-campeonato/{campeonatoId:long}")]
+        public async Task<IActionResult> ListaRodadasCampeonato(long campeonatoId)
+        {
+            try
+            {
+                var rodadas = await _rodadaService.ListaRodadasCampeonato(campeonatoId);
+
+                return Ok(rodadas);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+
+        [HttpPut("atualizar-rodada")]
+        public async Task<IActionResult> AtualizaRodada(
+            [FromBody] RodadaModel req)
+        {
+            try
+            {
+                await _rodadaService.AtualizaRodada(req);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+
+        [HttpDelete("excluir-rodada/{id:long}")]
+        public async Task<IActionResult> ExcluiRodada(long id)
+        {
+            try
+            {
+                await _rodadaService.ExcluiRodada(id);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
     }
 }

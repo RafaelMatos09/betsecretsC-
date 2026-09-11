@@ -17,5 +17,8 @@ namespace betsecrets.Services
         {
             return await _rodadaRepository.CadastrarRodada(req);
         }
+        public Task<List<RodadaModel>> ListaRodadasCampeonato(long campeonatoId) => _rodadaRepository.ListaRodadasCampeonato(campeonatoId);
+        public Task AtualizaRodada(RodadaModel req) => _rodadaRepository.AtualizaRodada(req);
+        public Task ExcluiRodada(long id) => _rodadaRepository.ExcluiRodada(id);
     }
 }

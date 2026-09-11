@@ -14,5 +14,7 @@
         public int? SaldoGols { get; set; }
         public int? Pontos { get; set; }
         public int? Posicao { get; set; }
+        public string? Time { get; set; }
+        public string? Escudo { get; set; }
     }
 }

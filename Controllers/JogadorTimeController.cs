@@ -15,6 +15,7 @@ namespace betsecrets.Controllers
         {
             _jogadorTimeService = jogadorTimeService;
         }
+
         [HttpPost("cadastrar-jogador-time")]
         public async Task<IActionResult> CadastraJogadorTime([FromBody] JogadorTimeModel req)
         {
@@ -28,5 +29,64 @@ namespace betsecrets.Controllers
                 return StatusCode(500, new { message = ex.Message });
             }
         }
+        
+        [HttpGet("listar-elenco/{timeId:long}")]
+        public async Task<IActionResult> ListaElenco(long timeId)
+        {
+            try
+            {
+                var elenco = await _jogadorTimeService.ListaElenco(timeId);
+
+                return Ok(elenco);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+
+        [HttpGet("listar-historico-jogador/{jogadorId:long}")]
+        public async Task<IActionResult> ListaHistoricoJogador(long jogadorId)
+        {
+            try
+            {
+                var historico = await _jogadorTimeService.ListaHistoricoJogador(jogadorId);
+
+                return Ok(historico);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+
+        [HttpPut("encerrar-vinculo/{id:long}")]
+        public async Task<IActionResult> EncerraVinculo(
+            long id,
+            [FromQuery] DateTime dataFim)
+        {
+            try
+            {
+                await _jogadorTimeService.EncerraVinculo(id, dataFim);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
     }
 }

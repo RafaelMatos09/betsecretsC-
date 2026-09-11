@@ -113,9 +113,9 @@ namespace betsecrets.Repositories
             {
                 await _context.ExecuteAsync(query, dbParam);
             }
-            catch
+            catch(Exception ex)
             {
-                // Falha no log de acesso não deve impedir o login
+                throw new Exception($"Erro ao cadastrar usuário: {ex.Message}", ex);
             }
         }
     }

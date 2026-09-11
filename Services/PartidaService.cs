@@ -17,5 +17,10 @@ namespace betsecrets.Services
         {
             return await _partidaRepository.CadastrarPartida(req);
         }
+        public Task<PartidaModel?> ConsultaPartida(long id) => _partidaRepository.ConsultaPartida(id);
+        public Task<List<PartidaModel>> ListaPartidasCampeonato(long campeonatoId, long? rodadaId) => _partidaRepository.ListaPartidasCampeonato(campeonatoId, rodadaId);
+        public Task RegistraResultado(long id, int golsCasa, int golsVisitante) => _partidaRepository.RegistraResultado(id, golsCasa, golsVisitante);
+        public Task ReagendaPartida(long id, DateTime dataHora) => _partidaRepository.ReagendaPartida(id, dataHora);
+        public Task ExcluiPartida(long id) => _partidaRepository.ExcluiPartida(id);
     }
 }

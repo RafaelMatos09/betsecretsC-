@@ -57,5 +57,42 @@ namespace betsecrets.Controllers
                 return StatusCode(500, new { message = ex.Message });
             }
         }
+        
+        [HttpPut("atualizar-time")]
+        public async Task<IActionResult> AtualizaTime([FromBody] TimesModel req)
+        {
+            try
+            {
+                await _timeService.AtualizaTime(req);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+
+        [HttpDelete("desativar-time/{id:long}")]
+        public async Task<IActionResult> DesativaTime(long id)
+        {
+            try
+            {
+                await _timeService.DesativaTime(id);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
     }
 }

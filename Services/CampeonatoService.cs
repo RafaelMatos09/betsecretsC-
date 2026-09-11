@@ -15,5 +15,9 @@ namespace betsecrets.Services
         {
             return await _campeonatoRepository.CadastroCampeonato(req);
         }
+        public Task<CampeonatoModel?> ConsultaCampeonato(long id) => _campeonatoRepository.ConsultaCampeonato(id);
+        public Task<List<CampeonatoModel>> ListaCampeonatos() => _campeonatoRepository.ListaCampeonatos();
+        public Task AtualizaCampeonato(CampeonatoModel req) => _campeonatoRepository.AtualizaCampeonato(req);
+        public Task ExcluiCampeonato(long id) => _campeonatoRepository.ExcluiCampeonato(id);
     }
 }

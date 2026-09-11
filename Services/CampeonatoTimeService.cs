@@ -17,5 +17,8 @@ namespace betsecrets.Services
         {
             return await _campeonatoTimeRepository.CadastrarCampeonatoTime(req);
         }
+        public Task<List<CampeonatoTimeModel>> ListaTimesCampeonato(long campeonatoId) => _campeonatoTimeRepository.ListaTimesCampeonato(campeonatoId);
+        public Task AtualizaGrupo(CampeonatoTimeModel req) => _campeonatoTimeRepository.AtualizaGrupo(req);
+        public Task ExcluiCampeonatoTime(long campeonatoId, long timeId) => _campeonatoTimeRepository.ExcluiCampeonatoTime(campeonatoId, timeId);
     }
 }

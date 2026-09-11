@@ -27,5 +27,7 @@ namespace betsecrets.Services
         {
             return await _timeRepository.ConsultaTimesDetalhes(id);
         }
+        public Task AtualizaTime(TimesModel req) => _timeRepository.AtualizaTime(req);
+        public Task DesativaTime(long id) => _timeRepository.DesativaTime(id);
     }
 }

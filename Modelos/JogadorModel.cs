@@ -2,7 +2,7 @@
 {
     public class JogadorModel
     {
-        public string? Id { get; set; }
+        public long? Id { get; set; }
         public string? Nome { get; set; }
         public string? Apelido { get; set; }
         public DateTime? DataNascimento { get; set; }

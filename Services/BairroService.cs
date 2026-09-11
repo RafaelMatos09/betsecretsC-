@@ -22,5 +22,9 @@ namespace betsecrets.Services
         {
             return await _bairroRepository.ListaBairros();
         }
+        public Task<BairroModel?> ConsultaBairro(int id) => _bairroRepository.ConsultaBairro(id);
+        public Task<List<BairroModel>> ListaBairrosPorCidade(string cidade) => _bairroRepository.ListaBairrosPorCidade(cidade);
+        public Task AtualizaBairro(BairroModel req) => _bairroRepository.AtualizaBairro(req);
+        public Task ExcluiBairro(int id) => _bairroRepository.ExcluiBairro(id);
     }
 }
