@@ -45,6 +45,10 @@ builder.Services.AddScoped<IPartidaEventoService, PartidaEventoService>();
 builder.Services.AddScoped<IPartidaEventoRepository, PartidaEventoRepository>();
 builder.Services.AddScoped<IClassificacaoService, ClassificacaoService>();
 builder.Services.AddScoped<IClassificacaoRepository, ClassificacaoRepository>();
+builder.Services.AddScoped<ICalendarioService, CalendarioService>();
+builder.Services.AddScoped<ICalendarioRepository, CalendarioRepository>();
+builder.Services.AddScoped<IEscalacaoService, EscalacaoService>();
+builder.Services.AddScoped<IEscalacaoRepository, EscalacaoRepository>();
 
 builder.Services.AddHttpClient<ApiFutebolService>((sp, client) =>
 {
