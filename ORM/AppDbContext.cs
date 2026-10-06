@@ -53,11 +53,11 @@ namespace betsecrets.ORM
             return await connection.ExecuteAsync(sql, parametros);
         }
 
-        // COUNT, SUM, MAX...
-        //public async Task<T> ExecuteScalarAsync<T>(string sql, object? parametros = null)
-        //{
-        //    using var connection = Connection();
-        //    return await connection.ExecuteScalarAsync<T>(sql, parametros);
-        //}
+        public async Task<T> ExecuteScalarAsync<T>(string sql, object? parametros = null)
+        {
+            using var connection = Connection();
+            var result = await connection.ExecuteScalarAsync<T>(sql, parametros);
+            return result!;
+        }
     }
 }

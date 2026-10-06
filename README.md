@@ -1,10 +1,17 @@
-# BetSecrets ⚽
+# BairroFut API
 
-> Uma API pessoal para organizar campeonatos de futebol amador: times, atletas, rodadas, partidas, eventos e classificação.
+> API do BairroFut para o futebol de bairro: times, atletas, calendário, escalação, relatórios e estatísticas de partida. A tabela do Campeonato Brasileiro fica no frontend, em outra fonte.
+
+## Check-in rápido
+
+- Calendário de jogos e escalação: prontos (`/api/CalendarioJogo`, `/api/EscalacaoJogo`).
+- Relatório de jogadores, com data da partida: `GET /api/Relatorio/jogadores`.
+- Estatísticas no estilo de confronto (chutes, chutes a gol, posse, escanteios, faltas, cartões): `GET /api/Relatorio/estatisticas` e `POST /api/Relatorio/salvar-estatistica`.
+- Ainda falta odds, feed ao vivo e a classificação do campeonato de bairro exposta no painel.
 
 ## Sobre o projeto
 
-O **BetSecrets** é um projeto pessoal desenvolvido para praticar e consolidar conhecimentos em desenvolvimento back-end com .NET. A proposta é centralizar a gestão de um campeonato, desde o cadastro das entidades até o acompanhamento de jogos, artilharia e tabela de classificação.
+O **BairroFut** é a API do futebol de bairro: times, atletas, calendário, escalação, relatório de jogadores e estatísticas de partida.
 
 O projeto está em evolução contínua e serve como laboratório para aplicar boas práticas de API, organização em camadas, autenticação e persistência de dados.
 

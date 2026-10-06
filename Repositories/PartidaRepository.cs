@@ -56,7 +56,7 @@ namespace betsecrets.Repositories
 
             try
             {
-                var id = await _context.ExecuteAsync(query, dbPara);
+                var id = await _context.ExecuteScalarAsync<long>(query, dbPara);
                 req.Id = id;
 
                 return req;
