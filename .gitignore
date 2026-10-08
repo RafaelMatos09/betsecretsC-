@@ -40,7 +40,16 @@ appsettings.Development.json
 appsettings.Local.json
 secrets.json
 .env
-.env.*
+.env.local
+.env.*.local
+
+# Front (Vite) dentro de client/
+client/node_modules/
+client/dist/
+client/dist-ssr/
+client/*.tsbuildinfo
+client/.eslintcache
+client/*.timestamp-*
 
 # Logs e temporários
 *.log

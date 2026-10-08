@@ -51,6 +51,7 @@ ORM/           Contexto de conexão com o banco de dados
 ## Pré-requisitos
 
 - [.NET SDK 8](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [Node.js](https://nodejs.org/) (o painel React fica em `client/`)
 - PostgreSQL
 
 ## Como executar localmente
@@ -65,14 +66,23 @@ copy appsettings.example.json appsettings.json
 
 3. Preencha em `appsettings.json` a conexão PostgreSQL e uma chave JWT segura.
 
-4. Restaure as dependências e inicie a API:
+4. Instale as dependências do painel (só na primeira vez, ou quando o `package.json` mudar):
 
 ```bash
-dotnet restore
+cd client
+npm install
+cd ..
+```
+
+5. Suba a API e o painel juntos:
+
+```bash
 dotnet run
 ```
 
-5. Em ambiente de desenvolvimento, acesse a documentação interativa em:
+O `dotnet run` inicia a API em `http://localhost:5027` e o Vite em `http://localhost:5174`. A raiz da API redireciona para o painel quando o Vite estiver pronto. O Vite encaminha `/api` para a API local, então o navegador fala com um único endereço de desenvolvimento.
+
+Swagger, só da API:
 
 ```text
 http://localhost:5027/swagger
