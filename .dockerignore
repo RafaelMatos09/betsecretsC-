@@ -10,7 +10,9 @@
 **/secrets.json
 **/.env
 **/.env.*
-client/
+client/node_modules
+client/dist
+client/dist-ssr
 **/TestResults
 **/publish
 **/out

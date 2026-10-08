@@ -82,6 +82,8 @@ dotnet run
 
 O `dotnet run` inicia a API em `http://localhost:5027` e o Vite em `http://localhost:5174`. A raiz da API redireciona para o painel quando o Vite estiver pronto. O Vite encaminha `/api` para a API local, então o navegador fala com um único endereço de desenvolvimento.
 
+No Render, a imagem Docker gera o painel e a API publica os dois no mesmo endereço. A raiz abre o painel; `/api` continua na API. Por isso o link de produção deixa de responder 404 na página inicial.
+
 Swagger, só da API:
 
 ```text

@@ -67,6 +67,13 @@ builder.Services.AddHttpClient<ApiFutebolService>((sp, client) =>
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 });
 
+builder.Services.AddHttpClient("CampeonatoBrasileiro", (sp, client) =>
+{
+    var config = sp.GetRequiredService<IConfiguration>();
+    var baseUrl = config["CampeonatoProxy:BaseUrl"] ?? "https://campeonatobrasileiroapi.onrender.com";
+    client.BaseAddress = new Uri(baseUrl.TrimEnd('/') + "/");
+});
+
 var jwtKey = builder.Configuration["Jwt:Key"]
     ?? throw new InvalidOperationException("JWT Key não configurada.");
 
@@ -126,10 +133,41 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+var spaIndex = Path.Combine(app.Environment.WebRootPath ?? Path.Combine(app.Environment.ContentRootPath, "wwwroot"), "index.html");
+var serveSpa = !app.Environment.IsDevelopment() && File.Exists(spaIndex);
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+else if (serveSpa)
+{
+    app.UseDefaultFiles();
+    app.UseStaticFiles();
+
+    app.Use(async (context, next) =>
+    {
+        var path = context.Request.Path.Value;
+        if (HttpMethods.IsGet(context.Request.Method)
+            && path is not null
+            && path.StartsWith("/api/campeonato/", StringComparison.OrdinalIgnoreCase))
+        {
+            var serie = path["/api/campeonato/".Length..].Trim('/');
+            if (serie is "a" or "b" or "c" or "d")
+            {
+                var client = context.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient("CampeonatoBrasileiro");
+                using var response = await client.GetAsync(serie, context.RequestAborted);
+                context.Response.StatusCode = (int)response.StatusCode;
+                if (response.Content.Headers.ContentType is { } contentType)
+                    context.Response.ContentType = contentType.ToString();
+                await response.Content.CopyToAsync(context.Response.Body, context.RequestAborted);
+                return;
+            }
+        }
+
+        await next(context);
+    });
 }
 
 app.UseCors("Frontend");
@@ -155,5 +193,22 @@ app.MapGet("/health/db", async (AppDbContext db) =>
 });
 
 app.MapControllers();
+
+if (serveSpa)
+{
+    app.MapFallback(async context =>
+    {
+        var path = context.Request.Path.Value ?? "";
+        if (path.StartsWith("/api", StringComparison.OrdinalIgnoreCase)
+            || path.StartsWith("/health", StringComparison.OrdinalIgnoreCase))
+        {
+            context.Response.StatusCode = StatusCodes.Status404NotFound;
+            return;
+        }
+
+        context.Response.ContentType = "text/html; charset=utf-8";
+        await context.Response.SendFileAsync(spaIndex);
+    });
+}
 
 app.Run();
