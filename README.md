@@ -7,7 +7,8 @@
 - Calendário de jogos e escalação: prontos (`/api/CalendarioJogo`, `/api/EscalacaoJogo`).
 - Relatório de jogadores, com data da partida: `GET /api/Relatorio/jogadores`.
 - Estatísticas no estilo de confronto (chutes, chutes a gol, posse, escanteios, faltas, cartões): `GET /api/Relatorio/estatisticas` e `POST /api/Relatorio/salvar-estatistica`.
-- Ainda falta odds, feed ao vivo e a classificação do campeonato de bairro exposta no painel.
+- Quadro da temporada e placar da rodada ficam em **Visão geral**, via `GET /api/campeonato/{serie}`.
+- Ainda falta odds e a classificação do campeonato de bairro exposta no painel.
 
 ## Sobre o projeto
 
@@ -52,6 +53,36 @@ Os campos ficam na tabela `pracas`, ligada ao bairro. O jogo do calendário guar
 Em **Time Society** a escalação é montada em cima do campo. A formação (por exemplo 1-2-2-1) define as posições. O jogador entra no ponto vago, o banco lista quem ficou de fora e **Salvar escalação** grava a escalação no jogo escolhido do calendário.
 
 ![Escalação do EncantadoFut no campo](docs/imagens/escalacao.png)
+
+## Quadro da temporada e placar ao vivo
+
+Em **Visão geral** o painel mostra a Série A do Campeonato Brasileiro 2026. A rodada atual é a 29 de 38.
+
+### Quadro da temporada
+
+O quadro lê a tabela que chega em `GET /api/campeonato/a` (também `b`, `c` e `d`). A resposta traz o campeonato, a classificação e as partidas da rodada.
+
+Em desenvolvimento o Vite encaminha `/api/campeonato` para `https://campeonatobrasileiroapi.onrender.com`. Em produção a própria API copia essa resposta. O botão **Atualizar** repete o pedido.
+
+A projeção até a rodada 38 é calculada no painel. Para cada time: pontos atuais mais a média de pontos por jogo vezes os jogos que faltam. Os cartões reordenam os clubes por esses pontos. No print, o Flamengo lidera com 60 pontos e a projeção leva a 81.
+
+![Quadro da temporada na rodada 29, com líder, ataque, defesa e projeção](docs/imagens/quadro-temporada.png)
+
+### Placar ao vivo
+
+O placar não é inventado aqui. Cada partida já chega com `status` e `score.home` / `score.away`.
+
+| `status` | O que o painel mostra |
+| --- | --- |
+| `live` ou `interval` | Selo **Ao vivo** e o placar numérico |
+| `finished` | **Encerrado**, com o placar final |
+| `scheduled` | **Agendado**, com traço no lugar do gol |
+
+Na rodada 29, o Cruzeiro está 2 × 0 com o São Paulo, marcado como ao vivo. Os outros jogos da mesma lista aparecem encerrados ou agendados.
+
+Há um segundo caminho, `GET /api/Partidas/ao-vivo`. Ele consulta `https://api.api-futebol.com.br/v1/ao-vivo` e devolve mandante, visitante, `placar_mandante`, `placar_visitante`, status e estádio. A lista da Visão geral usa o endpoint do campeonato.
+
+![Partidas da rodada, com o Cruzeiro 2 × 0 São Paulo ao vivo](docs/imagens/partidas-ao-vivo.png)
 
 ## Tecnologias
 
@@ -156,6 +187,8 @@ Os endpoints protegidos exigem um token JWT no cabeçalho `Authorization: Bearer
 | Praças | `GET /api/Praca/listar`, `POST /api/Praca/cadastrar` |
 | Calendário | `GET /api/CalendarioJogo/listar`, `POST /api/CalendarioJogo/cadastrar` |
 | Escalação do jogo | `POST /api/EscalacaoJogo/salvar-time`, `GET /api/EscalacaoJogo/listar-time/{partidaId}/{timeId}` |
+| Brasileirão | `GET /api/campeonato/a` (também `b`, `c` e `d`) |
+| Ao vivo | `GET /api/Partidas/ao-vivo` |
 
 Consulte o Swagger para a relação completa de rotas, parâmetros e modelos.
 
