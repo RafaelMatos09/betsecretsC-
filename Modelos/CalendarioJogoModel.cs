@@ -11,6 +11,11 @@ namespace betsecrets.Modelos
         public DateTime? DataPrevista { get; set; }
         public TimeSpan? HorarioPrevisto { get; set; }
         public string? LocalPrevisto { get; set; }
+        public long? PracaId { get; set; }
+        public string? PracaNome { get; set; }
+        public string? PracaEndereco { get; set; }
+        public double? PracaLatitude { get; set; }
+        public double? PracaLongitude { get; set; }
         public string? Status { get; set; }
         public string? Observacoes { get; set; }
         public string? TimeCasa { get; set; }

@@ -22,6 +22,7 @@ export async function cadastrarJogo(values: AgendarJogoValues): Promise<Calendar
     dataPrevista: values.dataPrevista,
     horarioPrevisto: values.horarioPrevisto ? `${values.horarioPrevisto}:00`.slice(0, 8) : null,
     localPrevisto: values.localPrevisto || null,
+    pracaId: values.pracaId || null,
     observacoes: values.observacoes || null,
     status: 'previsto',
   })

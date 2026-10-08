@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { CalendarRange, ChevronLeft, ChevronRight, MapPin, Plus, Trash2 } from 'lucide-react'
+import { MapaPracas } from '@/components/mapa/MapaPracas'
 import { AlertDialog } from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
 import type { CalendarioJogo, StatusCalendario } from '@/types/calendario'
+import type { Praca } from '@/types/praca'
 
 const WEEKDAYS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom']
 const MONTHS = [
@@ -56,6 +58,42 @@ function formatLongDate(key: string) {
   })
 }
 
+function temLocal(jogo: CalendarioJogo) {
+  return Number.isFinite(Number(jogo.pracaLatitude)) && Number.isFinite(Number(jogo.pracaLongitude))
+}
+
+function rotuloJogo(jogo: CalendarioJogo) {
+  const casa = jogo.siglaCasa || jogo.timeCasa || 'Casa'
+  const visita = jogo.siglaVisitante || jogo.timeVisitante || 'Vis'
+  const hora = formatHour(jogo.horarioPrevisto)
+  return hora ? `${casa} x ${visita} · ${hora}` : `${casa} x ${visita}`
+}
+
+function marcacoesDoMapa(lista: CalendarioJogo[]) {
+  const pracas: Praca[] = []
+  const porId = new Map<number, CalendarioJogo>()
+  for (const jogo of lista) {
+    if (!temLocal(jogo)) continue
+    const chave = jogo.pracaId ?? jogo.id
+    if (chave == null) continue
+    const rotulo = rotuloJogo(jogo)
+    const existente = pracas.find((item) => item.id === chave)
+    if (existente) {
+      existente.endereco = existente.endereco ? `${existente.endereco} · ${rotulo}` : rotulo
+      continue
+    }
+    porId.set(chave, jogo)
+    pracas.push({
+      id: chave,
+      nome: jogo.pracaNome || jogo.localPrevisto || rotulo,
+      endereco: rotulo,
+      latitude: Number(jogo.pracaLatitude),
+      longitude: Number(jogo.pracaLongitude),
+    })
+  }
+  return { pracas, porId }
+}
+
 function statusOf(jogo: CalendarioJogo): StatusCalendario {
   const status = jogo.status as StatusCalendario
   return status in STATUS_LABEL ? status : 'previsto'
@@ -101,6 +139,7 @@ export function CalendarioJogosView({
     return new Date(year, (month || 1) - 1, 1)
   })
   const [selectedKey, setSelectedKey] = useState(foco || todayKey)
+  const [focoMarcacao, setFocoMarcacao] = useState<number | null>(null)
   const [pendingDelete, setPendingDelete] = useState<CalendarioJogo | null>(null)
 
   useEffect(() => {
@@ -138,6 +177,24 @@ export function CalendarioJogosView({
   }, [cursor])
 
   const selectedGames = byDay.get(selectedKey) ?? []
+  const mesPrefix = `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, '0')}`
+  const jogosDoMes = useMemo(
+    () => jogos.filter((jogo) => dateKey(jogo.dataPrevista).startsWith(mesPrefix)),
+    [jogos, mesPrefix],
+  )
+  const diaComCampo = selectedGames.some(temLocal)
+  const marcacoes = useMemo(
+    () => marcacoesDoMapa(diaComCampo ? selectedGames : jogosDoMes),
+    [diaComCampo, selectedGames, jogosDoMes],
+  )
+
+  function abrirMarcacao(praca: Praca) {
+    const jogo = marcacoes.porId.get(praca.id ?? -1)
+    if (!jogo) return
+    const dia = dateKey(jogo.dataPrevista)
+    if (dia) setSelectedKey(dia)
+    setFocoMarcacao(praca.id ?? null)
+  }
 
   return (
     <div className="space-y-5">
@@ -257,6 +314,7 @@ export function CalendarioJogosView({
           </div>
         </div>
 
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)]">
         {selectedGames.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-emerald-900/20 bg-emerald-50/40 px-4 py-8 text-center">
             <p className="font-display text-xl font-bold text-emerald-950">Sem jogos neste dia</p>
@@ -266,8 +324,13 @@ export function CalendarioJogosView({
           <div className="grid gap-3">
             {selectedGames.map((jogo) => {
               const status = statusOf(jogo)
+              const destacada = focoMarcacao != null && (jogo.id === focoMarcacao || jogo.pracaId === focoMarcacao)
               return (
-                <article key={jogo.id} className="rounded-2xl border border-emerald-950/10 bg-[linear-gradient(180deg,#f7faf6,white)] p-4">
+                <article
+                  key={jogo.id}
+                  className={`rounded-2xl border bg-[linear-gradient(180deg,#f7faf6,white)] p-4 ${destacada ? 'border-emerald-700 ring-2 ring-emerald-700' : 'border-emerald-950/10'}`}
+                  onClick={() => setFocoMarcacao(jogo.pracaId ?? jogo.id ?? null)}
+                >
                   <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div className="flex flex-1 items-center justify-between gap-3">
                       <div className="flex min-w-0 items-center gap-2">
@@ -295,10 +358,11 @@ export function CalendarioJogosView({
                   </div>
 
                   <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-                    {jogo.localPrevisto && (
+                    {(jogo.pracaNome || jogo.localPrevisto) && (
                       <span className="inline-flex items-center gap-1">
                         <MapPin className="size-3.5" />
-                        {jogo.localPrevisto}
+                        {jogo.pracaNome || jogo.localPrevisto}
+                        {jogo.pracaEndereco ? ` · ${jogo.pracaEndereco}` : ''}
                       </span>
                     )}
                     {jogo.campeonatoNome && <span>{jogo.campeonatoNome}</span>}
@@ -325,6 +389,26 @@ export function CalendarioJogosView({
             })}
           </div>
         )}
+
+          <div className="space-y-2">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              {diaComCampo ? 'Campo dos jogos deste dia' : 'Campos marcados neste mês'}
+            </p>
+            {marcacoes.pracas.length > 0 ? (
+              <MapaPracas
+                pracas={marcacoes.pracas}
+                selectedId={focoMarcacao}
+                onSelect={abrirMarcacao}
+              />
+            ) : (
+              <div className="flex h-72 items-center justify-center rounded-2xl border border-dashed border-emerald-900/20 bg-emerald-50/40 px-4 text-center">
+                <p className="text-sm text-muted-foreground">
+                  Nenhum jogo deste mês tem campo marcado no mapa. Ao agendar, escolha a praça para o pino aparecer aqui.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
       </section>
 
       <AlertDialog

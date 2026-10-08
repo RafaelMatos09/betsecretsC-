@@ -10,6 +10,11 @@ export interface CalendarioJogo {
   dataPrevista?: string | null
   horarioPrevisto?: string | null
   localPrevisto?: string | null
+  pracaId?: number | null
+  pracaNome?: string | null
+  pracaEndereco?: string | null
+  pracaLatitude?: number | null
+  pracaLongitude?: number | null
   status?: StatusCalendario | string
   observacoes?: string | null
   timeCasa?: string
@@ -43,5 +48,6 @@ export interface AgendarJogoValues {
   dataPrevista: string
   horarioPrevisto: string
   localPrevisto: string
+  pracaId?: number | null
   observacoes: string
 }

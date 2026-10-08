@@ -50,7 +50,7 @@ namespace betsecrets.Services
             if (req.DataPrevista == default)
                 throw new Exception("Informe a data do jogo.");
 
-            return _repository.Confirmar(id, req.DataPrevista, req.HorarioPrevisto, req.LocalPrevisto);
+            return _repository.Confirmar(id, req.DataPrevista, req.HorarioPrevisto, req.LocalPrevisto, req.PracaId);
         }
 
         public Task VincularPartida(long id, long partidaId)

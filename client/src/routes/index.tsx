@@ -35,6 +35,14 @@ export function AppRoutes() {
             }
           />
           <Route
+            path="/pracas"
+            element={
+              <ProtectedRoute>
+                <MainPanelPrincipal />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/relatorio-jogadores"
             element={
               <ProtectedRoute>

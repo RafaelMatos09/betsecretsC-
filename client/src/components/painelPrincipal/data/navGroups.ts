@@ -3,6 +3,7 @@ import {
   CalendarDays,
   CalendarRange,
   ChartColumn,
+  MapPin,
   ClipboardList,
   FileText,
   Goal,
@@ -19,6 +20,7 @@ export type NavItemId =
   | 'classificacao'
   | 'jogos'
   | 'calendario'
+  | 'pracas'
   | 'relatorio-jogadores'
   | 'estatisticas'
   | 'meus-palpites'
@@ -54,6 +56,7 @@ export const navGroups: NavGroup[] = [
     items: [
       { id: 'time-society', label: 'Time Society', icon: Goal, path: '/time-society' },
       { id: 'calendario', label: 'Calendário', icon: CalendarRange, path: '/calendario' },
+      { id: 'pracas', label: 'Praças', icon: MapPin, path: '/pracas' },
       { id: 'relatorio-jogadores', label: 'Relatório de jogadores', icon: FileText, path: '/relatorio-jogadores' },
       { id: 'estatisticas', label: 'Estatísticas', icon: ChartColumn, path: '/estatisticas' },
       { id: 'times-campeonatos', label: 'Times e campeonatos', icon: ShieldCheck },

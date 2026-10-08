@@ -1,8 +1,12 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
+import { Link } from 'react-router-dom'
+import { MapaPracas } from '@/components/mapa/MapaPracas'
 import { Button } from '@/components/ui/button'
 import { Dialog } from '@/components/ui/dialog'
+import * as pracaService from '@/services/pracaService'
 import type { Campeonato, TimeSociety } from '@/types/escalacao'
 import type { AgendarJogoValues } from '@/types/calendario'
+import type { Praca } from '@/types/praca'
 
 interface AgendarJogoModalProps {
   open: boolean
@@ -35,6 +39,8 @@ export function AgendarJogoModal({
   const [dataPrevista, setDataPrevista] = useState('')
   const [horarioPrevisto, setHorarioPrevisto] = useState('')
   const [localPrevisto, setLocalPrevisto] = useState('')
+  const [pracaId, setPracaId] = useState<number | null>(null)
+  const [pracas, setPracas] = useState<Praca[]>([])
   const [observacoes, setObservacoes] = useState('')
 
   const adversarios = useMemo(
@@ -52,8 +58,30 @@ export function AgendarJogoModal({
     setDataPrevista('')
     setHorarioPrevisto('')
     setLocalPrevisto('')
+    setPracaId(null)
     setObservacoes('')
   }, [open, campeonatoId, campeonatos, timeFixoId])
+
+  useEffect(() => {
+    if (!open) return
+    let ativo = true
+    pracaService
+      .listarPracas()
+      .then((lista) => {
+        if (ativo) setPracas(lista)
+      })
+      .catch(() => {
+        if (ativo) setPracas([])
+      })
+    return () => {
+      ativo = false
+    }
+  }, [open])
+
+  function escolherPraca(praca: Praca) {
+    setPracaId(praca.id ?? null)
+    setLocalPrevisto(praca.nome)
+  }
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
@@ -73,6 +101,7 @@ export function AgendarJogoModal({
       dataPrevista,
       horarioPrevisto,
       localPrevisto,
+      pracaId,
       observacoes,
     })
   }
@@ -82,8 +111,8 @@ export function AgendarJogoModal({
       open={open}
       onClose={onClose}
       title="Agendar jogo"
-      description="O jogo entra no calendário como previsto. A escalação pode ser gravada nele em seguida."
-      className="max-w-xl"
+      description="O jogo entra no calendário como previsto. Escolha o campo no mapa para gravar onde a pelada acontece."
+      className="max-w-3xl"
     >
       <form className="grid gap-4" onSubmit={handleSubmit}>
         <label className="text-sm">
@@ -199,16 +228,60 @@ export function AgendarJogoModal({
           </label>
         </div>
 
-        <label className="text-sm">
-          <span className="mb-1 block font-medium">Local previsto</span>
-          <input
-            className={inputClass}
-            value={localPrevisto}
-            onChange={(event) => setLocalPrevisto(event.target.value)}
-            placeholder="Campo, quadra ou ginásio"
-            maxLength={150}
-          />
-        </label>
+        <div className="grid gap-3">
+          <div className="flex items-end justify-between gap-3">
+            <div>
+              <p className="font-medium">Campo</p>
+              <p className="text-sm text-muted-foreground">
+                {pracaId
+                  ? `Selecionado: ${localPrevisto}`
+                  : 'Toque um marcador para vincular o jogo a uma praça.'}
+              </p>
+            </div>
+            {pracaId && (
+              <button
+                type="button"
+                className="text-sm text-muted-foreground underline"
+                onClick={() => setPracaId(null)}
+              >
+                Desvincular
+              </button>
+            )}
+          </div>
+          <MapaPracas pracas={pracas} selectedId={pracaId} onSelect={escolherPraca} />
+          {pracas.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {pracas.map((praca) => (
+                <button
+                  key={praca.id}
+                  type="button"
+                  onClick={() => escolherPraca(praca)}
+                  className={`rounded-full border px-3 py-1.5 text-sm ${
+                    praca.id === pracaId
+                      ? 'border-emerald-700 bg-emerald-950 text-white'
+                      : 'border-border bg-background'
+                  }`}
+                >
+                  {praca.nome}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-muted-foreground">
+              Nenhuma praça cadastrada. <Link to="/pracas" className="underline">Marque um campo no mapa</Link> para escolher o local por aqui.
+            </p>
+          )}
+          <label className="text-sm">
+            <span className="mb-1 block font-medium">Local previsto</span>
+            <input
+              className={inputClass}
+              value={localPrevisto}
+              onChange={(event) => setLocalPrevisto(event.target.value)}
+              placeholder="Campo, quadra ou ginásio"
+              maxLength={150}
+            />
+          </label>
+        </div>
 
         <label className="text-sm">
           <span className="mb-1 block font-medium">Observações</span>

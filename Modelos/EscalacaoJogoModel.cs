@@ -28,6 +28,7 @@ namespace betsecrets.Modelos
         public DateTime DataPrevista { get; set; }
         public TimeSpan? HorarioPrevisto { get; set; }
         public string? LocalPrevisto { get; set; }
+        public long? PracaId { get; set; }
     }
 
     public class AtualizarStatusCalendarioRequest

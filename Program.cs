@@ -2,6 +2,7 @@ using betsecrets.Interfaces.Repository;
 using betsecrets.Interfaces.Services;
 using betsecrets.ORM;
 using betsecrets.Repositories;
+using betsecrets.Schema;
 using betsecrets.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -47,6 +48,8 @@ builder.Services.AddScoped<IClassificacaoService, ClassificacaoService>();
 builder.Services.AddScoped<IClassificacaoRepository, ClassificacaoRepository>();
 builder.Services.AddScoped<ICalendarioJogoService, CalendarioJogoService>();
 builder.Services.AddScoped<ICalendarioJogoRepository, CalendarioJogoRepository>();
+builder.Services.AddScoped<IPracaService, PracaService>();
+builder.Services.AddScoped<IPracaRepository, PracaRepository>();
 builder.Services.AddScoped<IEscalacaoJogoService, EscalacaoJogoService>();
 builder.Services.AddScoped<IEscalacaoJogoRepository, EscalacaoJogoRepository>();
 builder.Services.AddScoped<IRelatorioService, RelatorioService>();
@@ -193,6 +196,17 @@ app.MapGet("/health/db", async (AppDbContext db) =>
 });
 
 app.MapControllers();
+
+try
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    await PracasSchema.AplicarAsync(db);
+}
+catch (Exception ex)
+{
+    app.Logger.LogWarning(ex, "Não foi possível preparar a tabela de praças. O mapa de campos fica indisponível até o banco aceitar o esquema.");
+}
 
 if (serveSpa)
 {

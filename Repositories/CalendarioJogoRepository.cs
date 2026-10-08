@@ -25,6 +25,11 @@ namespace betsecrets.Repositories
                             cj.data_prevista AS DataPrevista,
                             cj.horario_previsto AS HorarioPrevisto,
                             cj.local_previsto AS LocalPrevisto,
+                            cj.praca_id AS PracaId,
+                            p.nome AS PracaNome,
+                            p.endereco AS PracaEndereco,
+                            p.latitude AS PracaLatitude,
+                            p.longitude AS PracaLongitude,
                             cj.status,
                             cj.observacoes,
                             tc.nome AS TimeCasa,
@@ -39,7 +44,8 @@ namespace betsecrets.Repositories
                         INNER JOIN times tc ON tc.id = cj.time_casa_id
                         INNER JOIN times tv ON tv.id = cj.time_visitante_id
                         LEFT JOIN rodadas r ON r.id = cj.rodada_id
-                        LEFT JOIN campeonatos c ON c.id = cj.campeonato_id";
+                        LEFT JOIN campeonatos c ON c.id = cj.campeonato_id
+                        LEFT JOIN pracas p ON p.id = cj.praca_id";
 
         public async Task<CalendarioJogoModel> Cadastrar(CalendarioJogoModel req)
         {
@@ -51,6 +57,7 @@ namespace betsecrets.Repositories
             dbPara.Add("@DataPrevista", req.DataPrevista);
             dbPara.Add("@HorarioPrevisto", req.HorarioPrevisto);
             dbPara.Add("@LocalPrevisto", req.LocalPrevisto);
+            dbPara.Add("@PracaId", req.PracaId);
             dbPara.Add("@Status", string.IsNullOrWhiteSpace(req.Status) ? "previsto" : req.Status);
             dbPara.Add("@Observacoes", req.Observacoes);
 
@@ -64,6 +71,7 @@ namespace betsecrets.Repositories
                             data_prevista,
                             horario_previsto,
                             local_previsto,
+                            praca_id,
                             status,
                             observacoes
                         )
@@ -76,6 +84,7 @@ namespace betsecrets.Repositories
                             @DataPrevista,
                             @HorarioPrevisto,
                             @LocalPrevisto,
+                            @PracaId,
                             @Status,
                             @Observacoes
                         )
@@ -135,13 +144,14 @@ namespace betsecrets.Repositories
             }
         }
 
-        public async Task Confirmar(long id, DateTime dataPrevista, TimeSpan? horarioPrevisto, string? localPrevisto)
+        public async Task Confirmar(long id, DateTime dataPrevista, TimeSpan? horarioPrevisto, string? localPrevisto, long? pracaId)
         {
             var query = @"
                         UPDATE calendario_jogos
                         SET data_prevista = @DataPrevista,
                             horario_previsto = @HorarioPrevisto,
                             local_previsto = @LocalPrevisto,
+                            praca_id = COALESCE(@PracaId, praca_id),
                             status = 'confirmado',
                             updated_at = NOW()
                         WHERE id = @Id";
@@ -151,6 +161,7 @@ namespace betsecrets.Repositories
             dbPara.Add("@DataPrevista", dataPrevista);
             dbPara.Add("@HorarioPrevisto", horarioPrevisto);
             dbPara.Add("@LocalPrevisto", localPrevisto);
+            dbPara.Add("@PracaId", pracaId);
 
             try
             {
@@ -224,7 +235,7 @@ namespace betsecrets.Repositories
             dbPara.Add("@RodadaId", atual.RodadaId);
             dbPara.Add("@TimeCasaId", atual.TimeCasaId);
             dbPara.Add("@TimeVisitanteId", atual.TimeVisitanteId);
-            dbPara.Add("@Local", atual.LocalPrevisto);
+            dbPara.Add("@Local", atual.PracaNome ?? atual.LocalPrevisto);
             dbPara.Add("@DataHora", dataHora);
 
             var insert = @"

@@ -20,11 +20,12 @@ import { ClassificacaoView } from './views/ClassificacaoView'
 import { VisaoGeralView } from './views/VisaoGeralView'
 import { SectionView } from './views/SectionView'
 import CalendarioRoute from '@/pages/calendario'
+import PracasRoute from '@/pages/pracas'
 import EstatisticasPartidasRoute from '@/pages/estatisticasPartidas'
 import RelatorioJogadoresRoute from '@/pages/relatorioJogadores'
 import TimeSocietyRoute from '@/pages/timeSociety'
 
-const sectionContent: Record<Exclude<NavItemId, 'classificacao' | 'configuracoes' | 'visao-geral' | 'time-society' | 'calendario' | 'relatorio-jogadores' | 'estatisticas'>, { title: string; description: string }> = {
+const sectionContent: Record<Exclude<NavItemId, 'classificacao' | 'configuracoes' | 'visao-geral' | 'time-society' | 'calendario' | 'pracas' | 'relatorio-jogadores' | 'estatisticas'>, { title: string; description: string }> = {
   jogos: {
     title: 'Jogos',
     description: 'Acompanhe partidas da rodada, horários e resultados em tempo real.',
@@ -50,6 +51,7 @@ const sectionContent: Record<Exclude<NavItemId, 'classificacao' | 'configuracoes
 function routeToNav(pathname: string): NavItemId | null {
   if (pathname === '/time-society') return 'time-society'
   if (pathname === '/calendario') return 'calendario'
+  if (pathname === '/pracas') return 'pracas'
   if (pathname === '/relatorio-jogadores') return 'relatorio-jogadores'
   if (pathname === '/estatisticas') return 'estatisticas'
   return null
@@ -155,6 +157,10 @@ export function PainelPrincipal() {
 
     if (active === 'calendario') {
       return <CalendarioRoute />
+    }
+
+    if (active === 'pracas') {
+      return <PracasRoute />
     }
 
     if (active === 'relatorio-jogadores') {
@@ -358,7 +364,7 @@ export function PainelPrincipal() {
           </div>
         </header>
 
-        <div className={`mx-auto px-5 py-7 md:px-10 md:py-10 ${active === 'time-society' || active === 'calendario' || active === 'relatorio-jogadores' || active === 'estatisticas' ? 'max-w-[1700px]' : 'max-w-[1500px]'}`}>{content}</div>
+        <div className={`mx-auto px-5 py-7 md:px-10 md:py-10 ${active === 'time-society' || active === 'calendario' || active === 'pracas' || active === 'relatorio-jogadores' || active === 'estatisticas' ? 'max-w-[1700px]' : 'max-w-[1500px]'}`}>{content}</div>
       </div>
 
       <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} />

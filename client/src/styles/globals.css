@@ -82,3 +82,15 @@
 @media (max-width: 640px) {
   .stat-card { @apply p-4; }
 }
+
+.mapa-osm .leaflet-container {
+  height: 18rem;
+  width: 100%;
+  z-index: 0;
+  font-family: inherit;
+  background: #ecfdf5;
+}
+
+.mapa-osm .leaflet-control-attribution {
+  font-size: 10px;
+}

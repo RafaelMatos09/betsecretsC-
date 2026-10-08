@@ -7,7 +7,7 @@ namespace betsecrets.Interfaces.Repository
         Task<CalendarioJogoModel> Cadastrar(CalendarioJogoModel req);
         Task<List<CalendarioJogoModel>> Listar(long? campeonatoId, long? timeId);
         Task<CalendarioJogoModel?> Consultar(long id);
-        Task Confirmar(long id, DateTime dataPrevista, TimeSpan? horarioPrevisto, string? localPrevisto);
+        Task Confirmar(long id, DateTime dataPrevista, TimeSpan? horarioPrevisto, string? localPrevisto, long? pracaId);
         Task VincularPartida(long id, long partidaId);
         Task AtualizarStatus(long id, string status, string? observacoes);
         Task<CalendarioJogoModel> Oficializar(long id);
