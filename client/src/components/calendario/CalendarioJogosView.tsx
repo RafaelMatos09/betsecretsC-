@@ -59,7 +59,10 @@ function formatLongDate(key: string) {
 }
 
 function temLocal(jogo: CalendarioJogo) {
-  return Number.isFinite(Number(jogo.pracaLatitude)) && Number.isFinite(Number(jogo.pracaLongitude))
+  if (jogo.pracaLatitude == null || jogo.pracaLongitude == null) return false
+  const latitude = Number(jogo.pracaLatitude)
+  const longitude = Number(jogo.pracaLongitude)
+  return Number.isFinite(latitude) && Number.isFinite(longitude) && !(latitude === 0 && longitude === 0)
 }
 
 function rotuloJogo(jogo: CalendarioJogo) {

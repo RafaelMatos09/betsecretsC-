@@ -27,6 +27,32 @@ O projeto está em evolução contínua e serve como laboratório para aplicar b
 - Cadastro/login de usuários com autenticação JWT;
 - Verificação de saúde da API e da conexão com o banco.
 
+## Calendário, mapa e escalação
+
+O painel junta a agenda do bairro, o mapa dos campos e a escalação do time.
+
+### Calendário
+
+Em **Calendário** o mês mostra os jogos já marcados. Cada dia com partida traz o confronto. Ao abrir o dia, dá para ver os times, o horário, o campo e mudar o status (confirmado, adiado, realizado ou cancelado).
+
+O jogo só ganha um pino no mapa quando, no agendamento, a praça é escolhida na lista ou no mapa. O texto do local, sozinho, não posiciona o ponto.
+
+![Calendário de outubro com os jogos do mês](docs/imagens/calendario.png)
+
+### Mapa das praças
+
+Em **Praças** o mapa é o OpenStreetMap. Não usa chave do Google. A busca encontra a praça ou o endereço e preenche nome, endereço e coordenadas. Também dá para clicar no mapa e gravar o campo.
+
+Os campos ficam na tabela `pracas`, ligada ao bairro. O jogo do calendário guarda essa praça em `calendario_jogos.praca_id`. A API cria essas colunas ao subir.
+
+![Mapa das praças no Encantado, com dois campos marcados](docs/imagens/mapa.png)
+
+### Escalação
+
+Em **Time Society** a escalação é montada em cima do campo. A formação (por exemplo 1-2-2-1) define as posições. O jogador entra no ponto vago, o banco lista quem ficou de fora e **Salvar escalação** grava a escalação no jogo escolhido do calendário.
+
+![Escalação do EncantadoFut no campo](docs/imagens/escalacao.png)
+
 ## Tecnologias
 
 - **.NET 8 / ASP.NET Core Web API**
@@ -36,6 +62,7 @@ O projeto está em evolução contínua e serve como laboratório para aplicar b
 - **BCrypt** para proteção de senhas
 - **Swagger / OpenAPI** para documentação da API em desenvolvimento
 - **Docker** e configuração preparada para deploy no Render
+- **Leaflet** e **OpenStreetMap** no mapa das praças e no calendário
 
 ## Organização do código
 
@@ -126,6 +153,9 @@ Os endpoints protegidos exigem um token JWT no cabeçalho `Authorization: Bearer
 | Partidas | `POST /api/Partida/cadastrar-partida`, `PUT /api/Partida/registrar-resultado/{id}` |
 | Eventos | `POST /api/PartidaEvento/cadastrar-partida-evento`, `GET /api/PartidaEvento/listar-artilharia/{campeonatoId}` |
 | Classificação | `GET /api/Classificacao/listar-classificacao/{campeonatoId}` |
+| Praças | `GET /api/Praca/listar`, `POST /api/Praca/cadastrar` |
+| Calendário | `GET /api/CalendarioJogo/listar`, `POST /api/CalendarioJogo/cadastrar` |
+| Escalação do jogo | `POST /api/EscalacaoJogo/salvar-time`, `GET /api/EscalacaoJogo/listar-time/{partidaId}/{timeId}` |
 
 Consulte o Swagger para a relação completa de rotas, parâmetros e modelos.
 
